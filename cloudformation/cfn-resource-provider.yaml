@@ -18,13 +18,6 @@ Conditions:
   UseBucketName: !Not [!Equals [!Ref S3BucketName, ""]]
 
 Resources:
-  CFNCustomProviderLogGroup:
-    Type: AWS::Logs::LogGroup
-    DependsOn:
-      - CFNCustomProvider
-    Properties:
-      LogGroupName: !Sub /aws/lambda/${CFNCustomProvider}
-      RetentionInDays: 7
   CFNCustomProvider:
     Type: AWS::Lambda::Function
     Properties:
